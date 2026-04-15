@@ -1,4 +1,4 @@
-# Experiment – 3: Determination of Positive, Negative & Zero Sequence Reactances of an Alternator
+# Theory
 
 ## A. Determination of Positive Sequence Reactance (X₁)
 
