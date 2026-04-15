@@ -2,38 +2,89 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "The synchronous reactance of an alternator is due to",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "leakage flux only",
+        "b": "reactance because of armature reaction in the machine",
+        "c": "synchronous machine reactance",
+        "d": "both leakage flux as well as armature reaction"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Incorrect. Leakage flux alone does not account for synchronous reactance; armature reaction also plays a role.",
+        "b": "Incorrect. Armature reaction is a component, but synchronous reactance includes both leakage reactance and armature reaction reactance.",
+        "c": "Incorrect. This is a circular definition.",
+        "d": "Correct. Synchronous reactance Xs = Xl (leakage reactance) + Xa (armature reaction reactance)."
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The saturated synchronous reactance of an alternator is ---------- its unsaturated synchronous reactance",
+      "answers": {
+        "a": "More than",
+        "b": "less than",
+        "c": "Equal to",
+        "d": "None of the above"
+      },
+      "explanations": {
+        "a": "Incorrect. Saturation reduces the effective reactance.",
+        "b": "Correct. Due to magnetic saturation, the reactance decreases compared to unsaturated condition.",
+        "c": "Incorrect. Saturation causes non-linearity, so they are not equal.",
+        "d": "Incorrect. Option (b) is correct."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Unbalanced three phase stator currents cause",
+      "answers": {
+        "a": "Vibrations",
+        "b": "Heating of rotor",
+        "c": "Double frequency currents in the rotor",
+        "d": "all of the above"
+      },
+      "explanations": {
+        "a": "Partially correct but incomplete. Vibrations occur due to negative sequence fields.",
+        "b": "Partially correct but incomplete. Rotor heating is caused by induced currents.",
+        "c": "Partially correct but incomplete. Double frequency currents are induced in the rotor.",
+        "d": "Correct. All three effects (vibrations, rotor heating, and double frequency currents) occur due to unbalanced currents."
+      },
+      "correctAnswer": "d",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "The short circuit characteristic of alternator is",
+      "answers": {
+        "a": "Always linear",
+        "b": "Always non-linear",
+        "c": "Either linear or non-linear",
+        "d": "None of the above"
+      },
+      "explanations": {
+        "a": "Correct. Due to negligible armature reaction and operation in linear region of magnetization, SCC is a straight line.",
+        "b": "Incorrect. SCC is linear because the machine operates in unsaturated region during short circuit.",
+        "c": "Incorrect. It is always linear for practical purposes.",
+        "d": "Incorrect. Option (a) is correct."
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "Mention the fault in which only positive sequence reactance is present",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "L-L (Line-to-Line)",
+        "b": "L-L-G (Line-to-Line-to-Ground)",
+        "c": "L-L-L (Three-phase fault)",
+        "d": "L-G (Line-to-Ground)"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Incorrect. L-L fault involves positive and negative sequences only.",
+        "b": "Incorrect. L-L-G fault involves all three sequences.",
+        "c": "Correct. A balanced three-phase fault has only positive sequence components.",
+        "d": "Incorrect. L-G fault involves positive, negative, and zero sequences."
       },
       "correctAnswer": "c",
-      "difficulty": "beginner"
+      "difficulty": "intermediate"
     }
   ]
 }
