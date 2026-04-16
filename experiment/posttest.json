@@ -2,38 +2,89 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "Negative sequence currents rotates with respect to field winding at",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Synchronous speed",
+        "b": "Twice of synchronous speed",
+        "c": "Half of synchronous speed",
+        "d": "Stationary"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Incorrect. Positive sequence rotates at synchronous speed relative to stator.",
+        "b": "Correct. Negative sequence rotates opposite to rotor direction at synchronous speed, so relative speed is 2× synchronous speed.",
+        "c": "Incorrect. This is not correct for negative sequence.",
+        "d": "Incorrect. Zero sequence does not produce a rotating field, but negative sequence does."
       },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "Zero sequence current can flow from a transmission line to a transformer if the windings are",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Grounded Star/Delta",
+        "b": "Delta/Star",
+        "c": "Star/Grounded star",
+        "d": "Delta/Delta"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Incorrect. Grounded star on one side and delta on other blocks zero sequence.",
+        "b": "Incorrect. Delta/Star without ground blocks zero sequence on delta side.",
+        "c": "Correct. Star (source side) with grounded star provides a path for zero sequence currents.",
+        "d": "Incorrect. Delta/Delta blocks zero sequence currents completely."
       },
       "correctAnswer": "c",
-      "difficulty": "beginner"
+      "difficulty": "advanced"
+    },
+    {
+      "question": "In which fault the positive sequence component of voltage at fault point is zero",
+      "answers": {
+        "a": "3-Phase fault",
+        "b": "L-L Fault",
+        "c": "L-L-G Fault",
+        "d": "L-G Fault"
+      },
+      "explanations": {
+        "a": "Correct. In a bolted three-phase fault, the voltage at fault point becomes zero, so positive sequence voltage is zero.",
+        "b": "Incorrect. In L-L fault, positive sequence voltage is not zero.",
+        "c": "Incorrect. In L-L-G fault, positive sequence voltage is not zero.",
+        "d": "Incorrect. In L-G fault, positive sequence voltage is not zero."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "If I<sub>a1</sub> is the positive sequence current of an alternator and Z<sub>1</sub>, Z<sub>2</sub> & Z<sub>0</sub> are the sequence impedances of the alternator, the voltage drop produced in L-G fault will be",
+      "answers": {
+        "a": "I<sub>a1</sub> Z<sub>1</sub>",
+        "b": "I<sub>a1</sub> (Z<sub>1</sub>+Z<sub>2</sub>)",
+        "c": "I<sub>a1</sub> (Z<sub>1</sub>+Z<sub>2</sub>+Z<sub>0</sub>)",
+        "d": "I<sub>a1</sub> (Z<sub>2</sub>+Z<sub>0</sub>)"
+      },
+      "explanations": {
+        "a": "Incorrect. For L-G fault, all three sequence networks are in series.",
+        "b": "Incorrect. Zero sequence is also involved.",
+        "c": "Correct. For a line-to-ground fault, the fault current If = 3I<sub>a1</sub> and voltage drop = I<sub>a1</sub>(Z<sub>1</sub>+Z<sub>2</sub>+Z<sub>0</sub>).",
+        "d": "Incorrect. Positive sequence impedance must be included."
+      },
+      "correctAnswer": "c",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "Which statement is correct for positive, negative and zero sequence impedances",
+      "answers": {
+        "a": "(Z<sub>1</sub> greater than Z<sub>2</sub> greater than Z<sub>0</sub>)",
+        "b": "(Z<sub>1</sub> less than Z<sub>2</sub> less than Z<sub>0</sub>)",
+        "c": "(Z<sub>0</sub> less than Z<sub>1</sub> less than Z<sub>2</sub>)",
+        "d": "None of these"
+      },
+      "explanations": {
+        "a": "Correct. Typically for synchronous machines: X<sub>d</sub> (positive) > X<sub>2</sub> (negative) > X<sub>0</sub> (zero).",
+        "b": "Incorrect. This order is reversed.",
+        "c": "Incorrect. X<sub>0</sub> is usually the smallest.",
+        "d": "Incorrect. Option (a) is correct for most synchronous machines."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
     }
   ]
 }
