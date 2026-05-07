@@ -115,9 +115,9 @@
             letter-spacing: 0.025em;
         }
 
-        /* Buttons */
+        /* Buttons (Updated for <a> tags) */
         .card-actions {
-            margin-top: auto; /* Pushes buttons to the bottom of the card */
+            margin-top: auto; 
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
@@ -137,6 +137,7 @@
             border-radius: 0.5rem;
             cursor: pointer;
             transition: all 0.2s ease;
+            text-decoration: none; /* Removes underline from links */
         }
 
         .arrow-icon {
@@ -175,18 +176,18 @@
                     <div class="formula-badge">X₁ = E / Iₛ꜀</div>
                 </div>
                 <div class="card-actions">
-                    <button class="action-btn" data-target="Open Circuit Test">
+                    <a href="oc.html" class="action-btn">
                         <span>Open Circuit Test</span>
                         <svg class="arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
-                    </button>
-                    <button class="action-btn" data-target="Short Circuit Test">
+                    </a>
+                    <a href="sc.html" class="action-btn">
                         <span>Short Circuit Test</span>
                         <svg class="arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -199,12 +200,12 @@
                     <div class="formula-badge">X₂ = Vₒₛ / 3.Iₛₒ</div>
                 </div>
                 <div class="card-actions">
-                    <button class="action-btn" data-target="Simulation of X2">
+                    <a href="x2.html" class="action-btn">
                         <span>Simulation of X₂</span>
                         <svg class="arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -217,37 +218,18 @@
                     <div class="formula-badge">X₀ = 3.V₀ / I₀</div>
                 </div>
                 <div class="card-actions">
-                    <button class="action-btn" data-target="Simulation of X0">
+                    <a href="x0.html" class="action-btn">
                         <span>Simulation of X₀</span>
                         <svg class="arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
-                    </button>
+                    </a>
                 </div>
             </div>
 
         </div>
     </div>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Select all buttons with the class 'action-btn'
-        const buttons = document.querySelectorAll('.action-btn');
-
-        // Add click listeners to handle navigation or simulation logic
-        buttons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const targetName = e.currentTarget.getAttribute('data-target');
-                
-                // For now, it just logs to the console. 
-                // Replace this with window.location.href = 'your-link.html' to actually navigate.
-                console.log(`User clicked to navigate to: ${targetName}`);
-                alert(`Navigating to: ${targetName}`);
-            });
-        });
-    });
-</script>
 
 </body>
 </html>
