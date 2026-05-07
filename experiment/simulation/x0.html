@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Determination of X₀</title>
+    <style>
+        /* Base Styles & Variables */
+        :root {
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --blue-50: #eff6ff;
+            --blue-100: #dbeafe;
+            --blue-600: #2563eb;
+            --red-600: #dc2626;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--slate-50);
+            color: var(--slate-800);
+            line-height: 1.6;
+        }
+
+        .main-wrapper {
+            padding: 2rem 1.5rem;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 72rem; /* 1152px */
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        .page-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--slate-200);
+        }
+
+        .page-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--slate-800);
+            letter-spacing: -0.025em;
+        }
+
+        .page-subtitle {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--blue-600);
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .subscript {
+            font-size: 0.8rem;
+            vertical-align: sub;
+        }
+
+        /* Layout Grid */
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .layout-grid {
+                grid-template-columns: 1fr 1.5fr;
+            }
+        }
+
+        /* Left Column: Info & Image */
+        .info-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .description {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--slate-200);
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            color: var(--slate-600);
+            font-size: 1rem;
+        }
+
+        /* Dedicated space for the Reference Image */
+        .image-container {
+            background-color: var(--slate-100);
+            border: 2px dashed var(--slate-300);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-placeholder-text {
+            color: var(--slate-600);
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Right Column: Simulation Card */
+        .sim-card {
+            background-color: var(--white);
+            border-radius: 0.75rem;
+            border: 1px solid var(--slate-200);
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: auto;
+        }
+
+        canvas {
+            background-color: var(--white);
+            border: 1px solid var(--slate-200);
+            border-radius: 0.5rem;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Modern Range Slider Controls */
+        .controls {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 2rem;
+            background-color: var(--slate-50);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--slate-200);
+        }
+
+        .control-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .controls label {
+            font-weight: 600;
+            color: var(--slate-700);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .value-display {
+            font-weight: 700;
+            color: var(--blue-600);
+            font-family: ui-monospace, monospace;
+            background: var(--blue-50);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            border: 1px solid var(--blue-100);
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: var(--slate-300);
+            border-radius: 4px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: var(--blue-600);
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            border: 2px solid var(--white);
+            transition: transform 0.1s;
+        }
+
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-wrapper">
+    <div class="container">
+        
+        <header class="page-header">
+            <h1 class="page-title">Determination of X₀</h1>
+            <h2 class="page-subtitle">
+                Zero Sequence Reactance
+            </h2>
+        </header>
+
+        <div class="layout-grid">
+            
+            <div class="info-panel">
+                <div class="description">
+                    <p>
+                        Adjust the field voltage (V<span class="subscript">f</span>) using the slider to simulate the experiment. 
+                        The circuit dynamically calculates the values for I<span class="subscript">0</span> and V<span class="subscript">0</span>, 
+                        which are then used to determine the Zero Sequence Reactance (X₀ = 3·V<span class="subscript">0</span> / I<span class="subscript">0</span>).
+                    </p>
+                </div>
+
+                <div class="image-container">
+                    <img src="x0_2.gif" alt="X₀ Illustration" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                    <div class="image-placeholder-text" style="display: none;">
+                        [ x0_2.gif Image Space ]
+                    </div>
+                </div>
+            </div>
+
+            <div class="sim-card">
+                <canvas id="x0canvas" width="600" height="540"></canvas>
+
+                <div class="controls">
+                    <div class="control-header">
+                        <label for="vfSlider">Field Voltage (V<span class="subscript" style="text-transform: lowercase;">f</span>)</label>
+                        <span class="value-display"><span id="voltageValue">0</span> V</span>
+                    </div>
+                    <input type="range" id="vfSlider" min="0" max="10" value="0" step="1" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById("x0canvas");
+    const ctx = canvas.getContext("2d");
+    const vfSlider = document.getElementById("vfSlider");
+    const voltageValueDisplay = document.getElementById("voltageValue");
+
+    // Load the GIF image for the circuit diagram
+    const img0 = new Image();
+    img0.src = "x0_2.gif"; // Change this if your file is named differently
+
+    img0.onload = draw;
+    img0.onerror = draw; // proceed even if image missing
+
+    function draw() {
+        const vf = parseInt(vfSlider.value);
+        voltageValueDisplay.textContent = vf;
+
+        // --- MATH SECTION ---
+        // I used placeholder multipliers here. 
+        // Replace 0.85 and 3.5 with the actual multipliers from your original Java applet!
+        const i0 = 0.85 * vf; 
+        const v0 = 3.5 * vf;
+        let x0 = 0;
+
+        // Ensure we're not dividing by zero
+        if (i0 !== 0) {
+            x0 = (3 * v0) / i0;
+        }
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw background image
+        if (img0.complete && img0.naturalHeight !== 0) {
+            ctx.drawImage(img0, 45, 5);
+        }
+
+        // Draw the slider value on the canvas (Top Left)
+        ctx.font = "600 16px system-ui";
+        ctx.fillStyle = "#1e293b";
+        ctx.fillText(`Vf = ${vf}`, 20, 40);
+
+        // Styling for the dynamic text values overlaying the circuit
+        ctx.font = "700 14px ui-monospace, monospace";
+        ctx.fillStyle = "#2563eb"; // Blue text for readability
+
+        // Draw computed values. You may need to tweak these X, Y coordinates 
+        // (125, 395 etc.) to align perfectly with the blank spots on your x0_2.gif
+        ctx.fillText(`${i0.toFixed(2)}`, 125, 395); 
+        ctx.fillText(`${v0.toFixed(2)}`, 230, 432);
+        
+        // Emphasize the final X0 value with red text
+        ctx.fillStyle = "#dc2626"; 
+        ctx.fillText(`${x0.toFixed(2)}`, 380, 79);
+    }
+
+    vfSlider.addEventListener("input", draw);
+    
+    // Initial draw
+    draw();
+</script>
+
+</body>
+</html>
