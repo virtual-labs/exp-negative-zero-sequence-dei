@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short Circuit Test on Alternator</title>
+    <style>
+        /* Base Styles & Variables */
+        :root {
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --blue-50: #eff6ff;
+            --blue-600: #2563eb;
+            --red-600: #dc2626;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--slate-50);
+            color: var(--slate-800);
+            line-height: 1.6;
+        }
+
+        .main-wrapper {
+            padding: 2rem 1.5rem;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 72rem; /* 1152px */
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        .page-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--slate-200);
+        }
+
+        .page-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--slate-800);
+            letter-spacing: -0.025em;
+        }
+
+        .page-subtitle {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--blue-600);
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .subscript {
+            font-size: 0.8rem;
+            vertical-align: sub;
+        }
+
+        /* Layout Grid */
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .layout-grid {
+                grid-template-columns: 1fr 1.5fr; /* Canvas side is slightly wider */
+            }
+        }
+
+        /* Left Column: Info & Image */
+        .info-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .description {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--slate-200);
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            color: var(--slate-600);
+            font-size: 1rem;
+        }
+
+        /* Dedicated space for the Alternator picture */
+        .image-container {
+            background-color: var(--slate-100);
+            border: 2px dashed var(--slate-300);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-placeholder-text {
+            color: var(--slate-600);
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Right Column: Simulation Card */
+        .sim-card {
+            background-color: var(--white);
+            border-radius: 0.75rem;
+            border: 1px solid var(--slate-200);
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: auto;
+        }
+
+        canvas {
+            background-color: var(--white);
+            border: 1px solid var(--slate-200);
+            border-radius: 0.5rem;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Modern Range Slider Controls */
+        .controls {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 2rem;
+            background-color: var(--slate-50);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--slate-200);
+        }
+
+        .control-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .controls label {
+            font-weight: 600;
+            color: var(--slate-700);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .value-display {
+            font-weight: 700;
+            color: var(--blue-600);
+            font-family: ui-monospace, monospace;
+            background: var(--blue-50);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            border: 1px solid var(--blue-100);
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: var(--slate-300);
+            border-radius: 4px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: var(--blue-600);
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            border: 2px solid var(--white);
+            transition: transform 0.1s;
+        }
+
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-wrapper">
+    <div class="container">
+        
+        <header class="page-header">
+            <h1 class="page-title">Short Circuit Test on Alternator</h1>
+            <h2 class="page-subtitle">
+                I<span class="subscript">f</span> vs I<span class="subscript">sc</span> Characteristic
+            </h2>
+        </header>
+
+        <div class="layout-grid">
+            
+            <div class="info-panel">
+                <div class="description">
+                    <p>
+                        Adjust the field voltage using the slider on the right to observe the changes in Field Current (I<span class="subscript">f</span>) 
+                        and Short Circuit Current (I<span class="subscript">sc</span>). The graph plots the direct proportional relationship 
+                        between the two values during a short circuit condition.
+                    </p>
+                </div>
+
+                <div class="image-container">
+                    <img src="alt.JPG" alt="Alternator" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                    <div class="image-placeholder-text" style="display: none;">
+                        [ alt.JPG Image Space ]
+                    </div>
+                </div>
+            </div>
+
+            <div class="sim-card">
+                <canvas id="sccCanvas" width="550" height="400"></canvas>
+
+                <div class="controls">
+                    <div class="control-header">
+                        <label for="fieldVoltage">Field Voltage</label>
+                        <span class="value-display"><span id="voltageValue">0</span> V</span>
+                    </div>
+                    <input type="range" id="fieldVoltage" min="0" max="230" value="0" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById("sccCanvas");
+    const ctx = canvas.getContext("2d");
+    const fieldVoltageSlider = document.getElementById("fieldVoltage");
+    const voltageValueDisplay = document.getElementById("voltageValue");
+
+    // Load the GIF image for the circuit diagram
+    const img = new Image();
+    img.src = "Current.gif"; 
+
+    // Wait until the image is loaded to draw
+    img.onload = function () {
+        draw(); 
+    };
+
+    // Fallback: If image fails to load, draw anyway so the graph works
+    img.onerror = function() {
+        console.warn("Current.gif could not be loaded. Graph will still render.");
+        draw();
+    };
+
+    // Function to draw subscript text (I_f and I_sc) properly
+    function drawSubscript(ctx, baseText, subText, x, y) {
+        ctx.save();
+        ctx.font = "600 14px system-ui"; 
+        ctx.fillStyle = "#334155";
+        ctx.fillText(baseText, x, y);
+        
+        ctx.font = "600 10px system-ui"; 
+        ctx.fillText(subText, x + ctx.measureText(baseText).width, y + 4); 
+        ctx.restore();
+    }
+
+    function draw() {
+        // Clear the canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw the circuit image if it loaded successfully
+        if (img.complete && img.naturalHeight !== 0) {
+            ctx.drawImage(img, 50, 50);
+        }
+
+        // Get the field voltage
+        const d = fieldVoltageSlider.value;
+        voltageValueDisplay.textContent = d; // Update the UI text
+
+        // Calculate I_f and I_sc values
+        const vif = (0.01 * d).toFixed(2);
+        const visc = (0.1522 * d).toFixed(2);
+
+        // Styling for the dynamic value boxes over the circuit
+        ctx.strokeStyle = "#cbd5e1";
+        ctx.fillStyle = "#ffffff";
+        ctx.lineWidth = 1.5;
+        
+        // Draw backgrounds for the text boxes to ensure readability
+        ctx.fillRect(106, 85, 38, 22);
+        ctx.strokeRect(106, 85, 38, 22);
+        
+        ctx.fillRect(77, 270, 46, 22);
+        ctx.strokeRect(77, 270, 46, 22);
+
+        // Draw the values of I_f and I_sc
+        ctx.fillStyle = "#2563eb"; // Blue text for variables
+        ctx.font = "600 12px ui-monospace, monospace";
+        ctx.fillText(vif, 112, 100);
+        ctx.fillText(visc, 83, 285);
+
+        // --- GRAPH DRAWING ---
+
+        // Draw the graph axes
+        ctx.strokeStyle = "#475569";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(350, 100);
+        ctx.lineTo(350, 250); // Vertical Y axis
+        ctx.moveTo(350, 250);
+        ctx.lineTo(500, 250); // Horizontal X axis
+        ctx.stroke();
+
+        // Draw I_f and I_sc labels on the axes using the subscript function
+        drawSubscript(ctx, "I", "f", 485, 265); 
+        drawSubscript(ctx, "I", "sc", 330, 100); 
+
+        // Draw rectangle around the graph area
+        ctx.strokeStyle = "#e2e8f0";
+        ctx.lineWidth = 1;
+        ctx.strokeRect(325, 60, 210, 220);
+
+        // Calculate the dynamic coordinates for the line
+        const x = d / 10;
+        const y = (d * 35) / 75;
+
+        // Draw the dynamic line
+        ctx.strokeStyle = "#dc2626"; // Red line
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(350, 250);
+        ctx.lineTo(350 + 2 * x, 250 - y);
+        ctx.stroke();
+
+        // Add Graph Title
+        ctx.fillStyle = "#1e293b";
+        ctx.font = "700 14px system-ui";
+        ctx.fillText("Graph between I", 345, 80);
+        
+        // Manual subscript for the title to look clean
+        ctx.font = "700 10px system-ui";
+        ctx.fillText("f", 455, 84);
+        ctx.font = "700 14px system-ui";
+        ctx.fillText(" and I", 460, 80);
+        ctx.font = "700 10px system-ui";
+        ctx.fillText("sc", 498, 84);
+
+        // Labels near the circuit
+        drawSubscript(ctx, "I", "f", 85, 100);
+        drawSubscript(ctx, "I", "sc", 92, 305);
+    }
+
+    // Event listener for the slider
+    fieldVoltageSlider.addEventListener("input", draw);
+
+    // Initial draw
+    draw();
+</script>
+
+</body>
+</html>
