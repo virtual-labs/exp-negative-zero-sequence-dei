@@ -1,178 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Virtual Power Lab</title>
+import React from 'react';
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family: "Poppins", sans-serif;
+const SequenceReactanceExperiments = () => {
+  const experiments = [
+    {
+      title: "Positive Sequence Reactance",
+      formula: "X₁ = E / Iₛ꜀",
+      tests: [
+        { name: "Open Circuit Test", action: "#" },
+        { name: "Short Circuit Test", action: "#" }
+      ]
+    },
+    {
+      title: "Negative Sequence Reactance",
+      formula: "X₂ = Vₒₛ / 3.Iₛₒ",
+      tests: [
+        { name: "Simulation of X₂", action: "#" }
+      ]
+    },
+    {
+      title: "Zero Sequence Reactance",
+      formula: "X₀ = 3.V₀ / I₀",
+      tests: [
+        { name: "Simulation of X₀", action: "#" }
+      ]
     }
+  ];
 
-    body{
-      background:#f4f6f9;
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding:40px;
-    }
+  return (
+    <div className="p-6 bg-slate-50 w-full rounded-xl">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-2xl font-bold text-slate-800 mb-8 tracking-tight border-b border-slate-200 pb-4">
+          Simulation of Experiment - 3
+        </h2>
 
-    .container{
-      width:100%;
-      max-width:1200px;
-    }
+        {/* Responsive Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {experiments.map((exp, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition-shadow duration-300 flex flex-col h-full"
+            >
+              {/* Card Header & Formula */}
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold text-slate-800 leading-snug">
+                  Determination of <br className="hidden lg:block"/>
+                  <span className="text-blue-600">{exp.title}</span>
+                </h3>
+                <div className="mt-4 inline-block bg-blue-50 text-blue-700 font-mono px-3 py-1.5 rounded-md text-sm font-semibold border border-blue-100 tracking-wide">
+                  {exp.formula}
+                </div>
+              </div>
 
-    .title{
-      text-align:center;
-      font-size:38px;
-      font-weight:700;
-      color:#111827;
-      margin-bottom:50px;
-    }
-
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:30px;
-    }
-
-    .card{
-      background:#ffffff;
-      border-radius:24px;
-      padding:40px 30px;
-      text-align:center;
-      transition:0.3s ease;
-      cursor:pointer;
-      border:1px solid #e5e7eb;
-      box-shadow:0 8px 24px rgba(0,0,0,0.06);
-    }
-
-    .card:hover{
-      transform:translateY(-8px);
-      box-shadow:0 14px 35px rgba(0,0,0,0.12);
-    }
-
-    .logo{
-      width:90px;
-      height:90px;
-      margin:auto;
-      margin-bottom:25px;
-      border-radius:20px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:42px;
-      color:white;
-    }
-
-    .card:nth-child(1) .logo{
-      background:#2563eb;
-    }
-
-    .card:nth-child(2) .logo{
-      background:#10b981;
-    }
-
-    .card:nth-child(3) .logo{
-      background:#f59e0b;
-    }
-
-    .card h2{
-      font-size:24px;
-      color:#111827;
-      margin-bottom:12px;
-    }
-
-    .card p{
-      color:#6b7280;
-      font-size:15px;
-      line-height:1.6;
-    }
-
-    .btn{
-      display:inline-block;
-      margin-top:24px;
-      padding:12px 22px;
-      border-radius:12px;
-      background:#111827;
-      color:white;
-      text-decoration:none;
-      font-size:14px;
-      transition:0.3s;
-    }
-
-    .btn:hover{
-      background:#2563eb;
-    }
-
-  </style>
-</head>
-<body>
-
-  <div class="container">
-
-    <div class="title">
-      Virtual Power Laboratory
+              {/* Action Buttons (mt-auto pushes them to the bottom of the card) */}
+              <div className="mt-auto space-y-3">
+                {exp.tests.map((test, tIndex) => (
+                  <button
+                    key={tIndex}
+                    onClick={() => console.log(`Navigating to ${test.name}`)}
+                    className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-slate-700 bg-slate-50 border border-slate-200 rounded-lg hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-200 group"
+                  >
+                    <span>{test.name}</span>
+                    <svg 
+                      className="w-4 h-4 opacity-40 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all" 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
+  );
+};
 
-    <div class="cards">
-
-      <!-- Card 1 -->
-      <div class="card">
-        <div class="logo">⚡</div>
-
-        <h2>Positive Sequence</h2>
-
-        <p>
-          Determine positive sequence reactance using
-          open circuit and short circuit tests.
-        </p>
-
-        <a href="#" class="btn">
-          Open Experiment
-        </a>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="card">
-        <div class="logo">🔄</div>
-
-        <h2>Negative Sequence</h2>
-
-        <p>
-          Perform simulation to calculate negative
-          sequence reactance of the machine.
-        </p>
-
-        <a href="#" class="btn">
-          Open Experiment
-        </a>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="card">
-        <div class="logo">🌐</div>
-
-        <h2>Zero Sequence</h2>
-
-        <p>
-          Simulate and analyze zero sequence reactance
-          characteristics in power systems.
-        </p>
-
-        <a href="#" class="btn">
-          Open Experiment
-        </a>
-      </div>
-
-    </div>
-
-  </div>
-
-</body>
-</html>
+export default SequenceReactanceExperiments;
