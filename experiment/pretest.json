@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "The synchronous reactance of an alternator is due to",
+      "question": "1. The synchronous reactance of an alternator is due to",
       "answers": {
         "a": "leakage flux only",
         "b": "reactance because of armature reaction in the machine",
@@ -19,7 +19,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "The saturated synchronous reactance of an alternator is ---------- its unsaturated synchronous reactance",
+      "question": "2. The saturated synchronous reactance of an alternator is ---------- its unsaturated synchronous reactance",
       "answers": {
         "a": "More than",
         "b": "less than",
@@ -36,7 +36,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "Unbalanced three phase stator currents cause",
+      "question": "3. Unbalanced three phase stator currents cause",
       "answers": {
         "a": "Vibrations",
         "b": "Heating of rotor",
@@ -53,7 +53,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "The short circuit characteristic of alternator is",
+      "question": "4. The short circuit characteristic of alternator is",
       "answers": {
         "a": "Always linear",
         "b": "Always non-linear",
@@ -70,7 +70,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "Mention the fault in which only positive sequence reactance is present",
+      "question": "5. Mention the fault in which only positive sequence reactance is present",
       "answers": {
         "a": "L-L (Line-to-Line)",
         "b": "L-L-G (Line-to-Line-to-Ground)",
