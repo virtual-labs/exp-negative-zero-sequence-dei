@@ -63,7 +63,7 @@ c. Apply low voltage from a variac and measure both voltage Vâ‚€ and current Iâ‚
 
 ### Open circuit Diagram
 
-![Open Circuit Diagram](../Dreamweaver/images/exp3/open.jpg)
+![Open Circuit Diagram](images/exp3/open.jpg)
 
 <center>Fig 3.1 Connection Diagram for open circuit</center>
 
@@ -71,7 +71,7 @@ c. Apply low voltage from a variac and measure both voltage Vâ‚€ and current Iâ‚
 
 ### Short circuit Diagram
 
-![Short Circuit Diagram](../Dreamweaver/images/exp3/short.jpg)
+![Short Circuit Diagram](images/exp3/short.jpg)
 
 <center>Fig 3.2 Connection Diagram for short circuit</center>
 
@@ -79,7 +79,7 @@ c. Apply low voltage from a variac and measure both voltage Vâ‚€ and current Iâ‚
 
 ### Diagram for Determination of Xâ‚‚
 
-![X2 Diagram](../Dreamweaver/images/exp3/x2.jpg)
+![X2 Diagram](images/exp3/x2.jpg)
 
 <center>Fig 3.3 Connection Diagram for Determination of Xâ‚‚</center>
 
