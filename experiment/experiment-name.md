@@ -1,1 +1,1 @@
-## To determine positive sequence, negative sequence and zero sequence reactances of an alternator.
+## Determination of Positive, Negative and Zero Sequence Reactances of an Alternator
