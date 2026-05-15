@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B-H Curve Simulation</title>
+    <style>
+        /* Base Styles & Variables */
+        :root {
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --blue-50: #eff6ff;
+            --blue-600: #2563eb;
+            --red-500: #ef4444;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--slate-50);
+            color: var(--slate-800);
+            line-height: 1.6;
+        }
+
+        .main-wrapper {
+            padding: 2rem 1.5rem;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 72rem;
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        .page-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--slate-200);
+        }
+
+        .page-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--slate-800);
+            letter-spacing: -0.025em;
+        }
+
+        .page-subtitle {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--blue-600);
+            margin-top: 0.5rem;
+        }
+
+        /* Layout Grid */
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .layout-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Left Column: Info & Image */
+        .info-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .description {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--slate-200);
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            color: var(--slate-600);
+            font-size: 1rem;
+        }
+
+        /* Dedicated space for the picture */
+        .image-container {
+            background-color: var(--slate-100);
+            border: 2px dashed var(--slate-300);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-placeholder-text {
+            color: var(--slate-600);
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Right Column: Simulation Card */
+        .sim-card {
+            background-color: var(--white);
+            border-radius: 0.75rem;
+            border: 1px solid var(--slate-200);
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        canvas {
+            background-color: var(--white);
+            border: 1px solid var(--slate-200);
+            border-radius: 0.5rem;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Modern Range Slider Controls */
+        .controls {
+            width: 100%;
+            max-width: 400px;
+            margin-top: 2rem;
+            background-color: var(--slate-50);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--slate-200);
+        }
+
+        .controls label {
+            display: block;
+            font-weight: 600;
+            color: var(--slate-700);
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: var(--slate-300);
+            border-radius: 4px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: var(--blue-600);
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            border: 2px solid var(--white);
+            transition: transform 0.1s;
+        }
+
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-wrapper">
+    <div class="container">
+        
+        <header class="page-header">
+            <h1 class="page-title">Open Circuit Characteristic of Alternator</h1>
+            <h2 class="page-subtitle">B-H Curve Simulation</h2>
+        </header>
+
+        <div class="layout-grid">
+            
+            <div class="info-panel">
+                <div class="description">
+                    <p>
+                        This curve shows the effect of variation in Load current over the B-H loop. 
+                        The load current changes with external resistance. The initial value of 
+                        resistance is high and the BH loop appears as a straight line. When we decrease 
+                        the resistance, the current value increases and, as a result, the thickness of 
+                        the B-H loop increases.
+                    </p>
+                </div>
+
+                <div class="image-container">
+                    <img src="OCC.GIF" alt="Open Circuit Characteristic (OCC)" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                    <div class="image-placeholder-text" style="display: none;">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="sim-card">
+                <canvas id="bhCanvas" width="400" height="400"></canvas>
+
+                <div class="controls">
+                    <label for="resistance">Resistance Control</label>
+                    <input type="range" id="resistance" min="0" max="200" value="200" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById("bhCanvas");
+    const ctx = canvas.getContext("2d");
+    const resistanceSlider = document.getElementById("resistance");
+
+    // Initial variables from original Java applet
+    let x1 = 300, y1 = 110, x2 = 100, y2 = 310;
+    
+    // Draw the grid and axes (Updated with softer modern colors)
+    function drawAxes() {
+        ctx.strokeStyle = "#334155"; // slate-700
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(25, 35, 350, 350);
+
+        // X and Y axes
+        ctx.beginPath();
+        ctx.moveTo(200, 35);
+        ctx.lineTo(200, 385); // Y axis
+        ctx.moveTo(25, 210);
+        ctx.lineTo(375, 210); // X axis
+        ctx.stroke();
+
+        // Grid lines
+        ctx.strokeStyle = "#cbd5e1"; // slate-300
+        ctx.lineWidth = 1;
+        for (let x = 60; x <= 340; x += 35) {
+            ctx.beginPath();
+            ctx.moveTo(x, 35);
+            ctx.lineTo(x, 385);
+            ctx.stroke();
+        }
+
+        for (let y = 70; y <= 350; y += 35) {
+            ctx.beginPath();
+            ctx.moveTo(25, y);
+            ctx.lineTo(375, y);
+            ctx.stroke();
+        }
+    }
+
+    // Draw the B-H Curve based on resistance slider value
+    function drawCurve(d) {
+        ctx.strokeStyle = "#ef4444"; // red-500
+        ctx.lineWidth = 2.5;
+
+        // Compute the dynamic control points for the curve
+        const cx1l = (d + 1050) / 5;
+        const cy1l = (d + 600) / 5;
+        const cx2l = (500 - d) / 2;
+        const cy2l = (720 - d) / 2;
+
+        // Draw cubic curves
+        const cubic1 = new Path2D();
+        cubic1.moveTo(x1, y1);
+        cubic1.bezierCurveTo(
+            (d + 300) / 2,
+            (d + 120) / 2,
+            (950 - d) / 5,
+            (1500 - d) / 5,
+            x2,
+            y2
+        );
+        ctx.stroke(cubic1);
+
+        const cubic2 = new Path2D();
+        cubic2.moveTo(x1, y1);
+        cubic2.bezierCurveTo(cx1l, cy1l, cx2l, cy2l, x2, y2);
+        ctx.stroke(cubic2);
+
+        // Draw quadratic curve
+        const quad1 = new Path2D();
+        quad1.moveTo(300, 110);
+        quad1.quadraticCurveTo((d + 1050) / 5, (d + 600) / 5, 200, 210);
+        ctx.stroke(quad1);
+    }
+
+    // Render the curve and grid
+    function render() {
+        const d = parseInt(resistanceSlider.value);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawAxes();
+
+        // Original logic: at highest resistance, it's a straight line
+        if (d >= 199) {
+            ctx.strokeStyle = "#ef4444";
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            ctx.moveTo(210, 200);
+            ctx.lineTo(190, 220);
+            ctx.stroke();
+        } else {
+            drawCurve(d);
+        }
+    }
+
+    // Event listener for slider input
+    resistanceSlider.addEventListener("input", render);
+
+    // Initial render when the page loads
+    render();
+</script>
+
+</body>
+</html>
