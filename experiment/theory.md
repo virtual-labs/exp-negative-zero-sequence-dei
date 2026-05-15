@@ -11,7 +11,7 @@ where E and I<sub>sc</sub> are No load armature voltage and short circuit armatu
 ### 1. Open Circuit Test
 
 a. Run the machine at rated speed.  
-b. Connect a voltmeter and ammeter according to the [open circuit diagram](#opencircuit-diagram).  
+b. Connect a voltmeter and ammeter according to the [open circuit diagram](#open-circuit-diagram).  
 c. Note the readings for different exciting currents.
 
 ### 2. Short Circuit Test
@@ -87,6 +87,6 @@ c. Apply low voltage from a variac and measure both voltage V₀ and current I�
 
 ### Diagram for Determination of X₀
 
-![X0 Diagram](/images/exp3/x0.jpg)
+![X0 Diagram](images/exp3/x0.jpg)
 
 <center>Fig 3.4 Connection Diagram for Determination of X₀</center>
