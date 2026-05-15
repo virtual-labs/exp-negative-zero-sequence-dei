@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "Negative sequence currents rotates with respect to field winding at",
+      "question": "6. Negative sequence currents rotates with respect to field winding at",
       "answers": {
         "a": "Synchronous speed",
         "b": "Twice of synchronous speed",
@@ -19,7 +19,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "Zero sequence current can flow from a transmission line to a transformer if the windings are",
+      "question": "7. Zero sequence current can flow from a transmission line to a transformer if the windings are",
       "answers": {
         "a": "Grounded Star/Delta",
         "b": "Delta/Star",
@@ -36,7 +36,7 @@
       "difficulty": "advanced"
     },
     {
-      "question": "In which fault the positive sequence component of voltage at fault point is zero",
+      "question": "8. In which fault the positive sequence component of voltage at fault point is zero",
       "answers": {
         "a": "3-Phase fault",
         "b": "L-L Fault",
@@ -53,7 +53,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "If I<sub>a1</sub> is the positive sequence current of an alternator and Z<sub>1</sub>, Z<sub>2</sub> & Z<sub>0</sub> are the sequence impedances of the alternator, the voltage drop produced in L-G fault will be",
+      "question": "9. If I<sub>a1</sub> is the positive sequence current of an alternator and Z<sub>1</sub>, Z<sub>2</sub> & Z<sub>0</sub> are the sequence impedances of the alternator, the voltage drop produced in L-G fault will be",
       "answers": {
         "a": "I<sub>a1</sub> Z<sub>1</sub>",
         "b": "I<sub>a1</sub> (Z<sub>1</sub>+Z<sub>2</sub>)",
@@ -70,7 +70,7 @@
       "difficulty": "advanced"
     },
     {
-      "question": "Which statement is correct for positive, negative and zero sequence impedances",
+      "question": "10. Which statement is correct for positive, negative and zero sequence impedances",
       "answers": {
         "a": "(Z<sub>1</sub> greater than Z<sub>2</sub> greater than Z<sub>0</sub>)",
         "b": "(Z<sub>1</sub> less than Z<sub>2</sub> less than Z<sub>0</sub>)",
