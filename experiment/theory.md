@@ -87,6 +87,6 @@ c. Apply low voltage from a variac and measure both voltage V₀ and current I�
 
 ### Diagram for Determination of X₀
 
-![X0 Diagram](../Dreamweaver/images/exp3/x0.jpg)
+![X0 Diagram](/images/exp3/x0.jpg)
 
 <center>Fig 3.4 Connection Diagram for Determination of X₀</center>
