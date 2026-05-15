@@ -1,4 +1,4 @@
-# Theory and Procedure of the Experiment - 3
+
 
 ## A. Determination of Positive Sequence Reactance (X₁)
 
