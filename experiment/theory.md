@@ -1,6 +1,8 @@
 
 
-## A. Determination of Positive Sequence Reactance (X₁)
+## Theory
+
+## A. Determination of Positive Sequence reactance (X1)
 
 A system component operating under balanced condition of voltage and current is in effect in a positive sequence mode. The positive sequence reactance X₁ of a synchronous machine under steady state condition is the direct axis synchronous reactance X<sub>d</sub> of the machine. The positive sequence impedance can also be defined as the impedance offered by the machine to the flow of positive sequence currents in the armature windings create a rotating magnetic field. The positive sequence reactance can be calculated by the expression:
 
@@ -63,30 +65,44 @@ c. Apply low voltage from a variac and measure both voltage V₀ and current I�
 
 ### Open circuit Diagram
 
+<div align="center">
+
 ![Open Circuit Diagram](images/exp3/open.jpg)
 
 <center>Fig 3.1 Connection Diagram for open circuit</center>
 
----
+</div>
+
 
 ### Short circuit Diagram
 
+<div align="center">
+  
 ![Short Circuit Diagram](images/exp3/short.jpg)
 
 <center>Fig 3.2 Connection Diagram for short circuit</center>
 
----
+</div>
+
 
 ### Diagram for Determination of X₂
+
+<div align="center">
 
 ![X2 Diagram](images/exp3/x2.jpg)
 
 <center>Fig 3.3 Connection Diagram for Determination of X₂</center>
 
----
+</div>
+
+
 
 ### Diagram for Determination of X₀
+
+<div align="center">
 
 ![X0 Diagram](images/exp3/x0.jpg)
 
 <center>Fig 3.4 Connection Diagram for Determination of X₀</center>
+
+</div>
