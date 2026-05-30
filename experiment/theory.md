@@ -36,8 +36,6 @@ The negative sequence reactance X₂ can be obtained by running the machine at r
 
 <center>φ = cos⁻¹(P / (V<sub>sc</sub> · I<sub>sc</sub>))</center>
 
-**Procedure:**
-
 a. Make the connections as shown in [figure for determining X₂](#diagram-for-determination-of-x₂).  
 b. Run the machine at rated speed.  
 c. Short circuit two phases of the alternator through an ammeter and the current coil of the wattmeter.  
@@ -50,8 +48,6 @@ f. Note the reading of voltage, current and power.
 ## C. Determination of Zero Sequence Reactance (X₀)
 
 The machine is driven at rated speed. Connect all three phases in parallel and the voltmeter and ammeter according to the [figure for determining X₀](#diagram-for-determination-of-x₀).
-
-**Procedure:**
 
 a. Connect the armature winding in parallel according to the circuit diagram.  
 b. Run the machine at rated speed.  
@@ -105,4 +101,18 @@ c. Apply low voltage from a variac and measure both voltage V₀ and current I�
 
 <center>Fig 3.4 Connection Diagram for Determination of X₀</center>
 
+</div>
+
+## Video for experiment:
+
+<!-- end #menu -->
+<br/><br/><br/>
+
+<div align="center">
+  <b style="font-size:18px">Experiment 3. To determine positive sequence, negative sequence and zero sequence reactances of an alternator.<br/>Video-1</b><br/><br/>
+  
+  <video width="480" height="360" controls>
+    <source src="videos/Video3.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </div>
