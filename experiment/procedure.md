@@ -44,9 +44,9 @@
    
 ## Observations
 
-<div align="center">
-
 ### Table 1 - Open Circuit Test
+
+<div align="center">
 
 | S.No. | Voltage (V) | Field Current (A) | Speed (rpm) |
 |-------|-------------|-------------------|-------------|
@@ -57,9 +57,13 @@
 | .     | .           | .                 | .           |
 | n     | .           | .                 | .           |
 
+</div>
+
 ---
 
 ### Table 2 - Short Circuit Test
+
+<div align="center">
 
 | S.No. | Armature Current (A) | Field Current (A) | Speed (rpm) |
 |-------|----------------------|-------------------|-------------|
@@ -70,9 +74,13 @@
 | .     | .                    | .                 | .           |
 | n     | .                    | .                 | .           |
 
+</div>
+
 ---
 
 ### Table 3 - Determination of X₂
+
+<div align="center">
 
 | S.No. | Voltage (V) | Current (A) | Power (W) | Z₂ (Ω) | X₂ (Ω) |
 |-------|-------------|-------------|-----------|--------|--------|
@@ -83,9 +91,13 @@
 | .     | .           | .           | .         | .      | .      |
 | n     | .           | .           | .         | .      | .      |
 
+</div>
+
 ---
 
 ### Table 4 - Determination of X₀
+
+<div align="center">
 
 | S.No. | Voltage (V) | Current (A) | Speed (rpm) | X₀ (Ω) |
 |-------|-------------|-------------|-------------|--------|
@@ -96,9 +108,7 @@
 | .     | .           | .           | .           | .      |
 | n     | .           | .           | .           | .      |
 
-
 </div>
-
 
 
 ## Video for experiment:
