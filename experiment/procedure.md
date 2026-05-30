@@ -11,7 +11,9 @@
 7. Calculate the phase voltage and phase current.
 8. Determine:
 
-   **X₁ = Vph / Iph**
+   <div align="center">
+     <b>X₁ = V<sub>ph</sub> / I<sub>ph</sub></b>
+   </div>
 
 ### B. Determination of Negative Sequence Reactance (X₂)
 
@@ -23,7 +25,9 @@
 6. Record voltage and current readings at rated current.
 7. Calculate:
 
-   **X₂ = Vph / Iph**
+   <div align="center">
+     <b>X₂ = V<sub>ph</sub> / I<sub>ph</sub></b>
+   </div>
 
 ### C. Determination of Zero Sequence Reactance (X₀)
 
@@ -34,7 +38,10 @@
 5. Record voltage and current.
 6. Calculate:
 
-   **X₀ = V / 3I**
+   <div align="center">
+     <b>X₀ = V / 3I</b>
+   </div>
+   
 ## Observations
 
 <div align="center">
@@ -89,29 +96,10 @@
 | .     | .           | .           | .           | .      |
 | n     | .           | .           | .           | .      |
 
+
 </div>
 
-## Formulas Summary
 
-| Reactance | Formula | Test |
-|-----------|---------|------|
-| **X₁** | X₁ = E / I<sub>sc</sub> | Open Circuit + Short Circuit Test |
-| **Z₂** | Z₂ = V<sub>os</sub> / (3 × I<sub>sc</sub>) | Two-phase short circuit |
-| **X₂** | X₂ = Z₂ × sin φ, where φ = cos⁻¹(P / (V<sub>sc</sub> × I<sub>sc</sub>)) | Two-phase short circuit |
-| **X₀** | X₀ = 3 × (V₀ / I₀) | All three phases in parallel |
-
----
-
-## Important Notes
-
-- For **X₁** test: Run machine at rated speed, vary field current, record OCC and SCC data.
-- For **X₂** test: Short circuit two phases, keep excitation low, measure voltage, current, and power.
-- For **X₀** test: Connect all three phases in parallel, apply reduced single-phase voltage, short the rotor field winding.
-- Ensure all readings are taken within machine ratings to avoid damage.
-
----
-
-> *Fill in the observed values in place of "." for each table during the experiment.*
 
 ## Video for experiment:
 
