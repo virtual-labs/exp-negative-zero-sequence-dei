@@ -15,8 +15,7 @@
         "c": "Incorrect. This is a circular definition.",
         "d": "Correct. Synchronous reactance Xs = Xl (leakage reactance) + Xa (armature reaction reactance)."
       },
-      "correctAnswer": "d",
-      "difficulty": "beginner"
+      "correctAnswer": "d"
     },
     {
       "question": "2. The saturated synchronous reactance of an alternator is ---------- its unsaturated synchronous reactance",
@@ -32,8 +31,7 @@
         "c": "Incorrect. Saturation causes non-linearity, so they are not equal.",
         "d": "Incorrect. Option (b) is correct."
       },
-      "correctAnswer": "b",
-      "difficulty": "beginner"
+      "correctAnswer": "b"
     },
     {
       "question": "3. Unbalanced three phase stator currents cause",
@@ -49,8 +47,7 @@
         "c": "Partially correct but incomplete. Double frequency currents are induced in the rotor.",
         "d": "Correct. All three effects (vibrations, rotor heating, and double frequency currents) occur due to unbalanced currents."
       },
-      "correctAnswer": "d",
-      "difficulty": "intermediate"
+      "correctAnswer": "d"
     },
     {
       "question": "4. The short circuit characteristic of alternator is",
@@ -66,8 +63,7 @@
         "c": "Incorrect. It is always linear for practical purposes.",
         "d": "Incorrect. Option (a) is correct."
       },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
+      "correctAnswer": "a"
     },
     {
       "question": "5. Mention the fault in which only positive sequence reactance is present",
@@ -83,8 +79,7 @@
         "c": "Correct. A balanced three-phase fault has only positive sequence components.",
         "d": "Incorrect. L-G fault involves positive, negative, and zero sequences."
       },
-      "correctAnswer": "c",
-      "difficulty": "intermediate"
+      "correctAnswer": "c"
     }
   ]
 }
