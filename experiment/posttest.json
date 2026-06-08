@@ -15,8 +15,7 @@
         "c": "Incorrect. This is not correct for negative sequence.",
         "d": "Incorrect. Zero sequence does not produce a rotating field, but negative sequence does."
       },
-      "correctAnswer": "b",
-      "difficulty": "intermediate"
+      "correctAnswer": "b"
     },
     {
       "question": "3. Zero sequence current can flow from a transmission line to a transformer if the windings are",
@@ -32,8 +31,7 @@
         "c": "Correct. Star (source side) with grounded star provides a path for zero sequence currents.",
         "d": "Incorrect. Delta/Delta blocks zero sequence currents completely."
       },
-      "correctAnswer": "c",
-      "difficulty": "advanced"
+      "correctAnswer": "c"
     },
     {
       "question": "4. In which fault the positive sequence component of voltage at fault point is zero",
@@ -49,8 +47,7 @@
         "c": "Incorrect. In L-L-G fault, positive sequence voltage is not zero.",
         "d": "Incorrect. In L-G fault, positive sequence voltage is not zero."
       },
-      "correctAnswer": "a",
-      "difficulty": "intermediate"
+      "correctAnswer": "a"
     },
     {
       "question": "9. If I<sub>a1</sub> is the positive sequence current of an alternator and Z<sub>1</sub>, Z<sub>2</sub> & Z<sub>0</sub> are the sequence impedances of the alternator, the voltage drop produced in L-G fault will be",
@@ -66,8 +63,7 @@
         "c": "Correct. For a line-to-ground fault, the fault current If = 3I<sub>a1</sub> and voltage drop = I<sub>a1</sub>(Z<sub>1</sub>+Z<sub>2</sub>+Z<sub>0</sub>).",
         "d": "Incorrect. Positive sequence impedance must be included."
       },
-      "correctAnswer": "c",
-      "difficulty": "advanced"
+      "correctAnswer": "c"
     },
     {
       "question": "5. Which statement is correct for positive, negative and zero sequence impedances",
@@ -83,8 +79,7 @@
         "c": "Incorrect. X<sub>0</sub> is usually the smallest.",
         "d": "Incorrect. Option (a) is correct for most synchronous machines."
       },
-      "correctAnswer": "a",
-      "difficulty": "intermediate"
+      "correctAnswer": "a"
     }
   ]
 }
