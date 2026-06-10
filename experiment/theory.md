@@ -6,7 +6,7 @@
 
 A system component operating under balanced condition of voltage and current is in effect in a positive sequence mode. The positive sequence reactance X₁ of a synchronous machine under steady state condition is the direct axis synchronous reactance X<sub>d</sub> of the machine. The positive sequence impedance can also be defined as the impedance offered by the machine to the flow of positive sequence currents in the armature windings create a rotating magnetic field. The positive sequence reactance can be calculated by the expression:
 
-$$X_1 = \frac{E}{I_{sc}}$$
+<center>X₁ = E / I<sub>sc</sub></center>
 
 where E and I<sub>sc</sub> are No load armature voltage and short circuit armature current respectively.
 
@@ -30,11 +30,11 @@ e. Measure the short circuit current corresponding to the field current.
 
 The negative sequence reactance X₂ can be obtained by running the machine at rated speed with a low excitation and with a sustained two phase short circuit between the open phase and any short circuited phase. Let open circuit voltage be V<sub>os</sub> and the short circuit current I<sub>sc</sub>. The negative sequence impedance Z₂ and reactance X₂ can be calculated using the following expressions:
 
-$$Z_2 = \frac{V_{os}}{3 \cdot I_{sc}}$$
+<center>Z₂ = V<sub>os</sub> / (3 · I<sub>sc</sub>)</center>
 
-$$X_2 = Z_2 \cdot \sin \phi$$
+<center>X₂ = Z₂ · sin φ</center>
 
-$$\phi = \cos^{-1}\left(\frac{P}{V_{sc} \cdot I_{sc}}\right)$$
+<center>φ = cos⁻¹(P / (V<sub>sc</sub> · I<sub>sc</sub>))</center>
 
 a. Make the connections as shown in [figure for determining X₂](#diagram-for-determination-of-x₂).  
 b. Run the machine at rated speed.  
@@ -53,7 +53,8 @@ a. Connect the armature winding in parallel according to the circuit diagram.
 b. Run the machine at rated speed.  
 c. Apply low voltage from a variac and measure both voltage V₀ and current I₀ taken by the armature windings. Zero sequence reactance can be calculated using the following expression:
 
-$$X_0 = \frac{3 \cdot Z_0}{I_0}$$
+<center>X₀ = 3 · Z₀ / I₀</center>
+
 
 ---
 
