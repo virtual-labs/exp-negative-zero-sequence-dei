@@ -11,9 +11,7 @@
 7. Calculate the phase voltage and phase current.
 8. Determine:
 
-   <div align="center">
-     <b>X₁ = V<sub>ph</sub> / I<sub>ph</sub></b>
-   </div>
+  $$X_1 = \frac{V_{ph}}{I_{ph}}$$
 
 ### B. Determination of Negative Sequence Reactance (X₂)
 
@@ -25,9 +23,7 @@
 6. Record voltage and current readings at rated current.
 7. Calculate:
 
-   <div align="center">
-     <b>X₂ = V<sub>ph</sub> / I<sub>ph</sub></b>
-   </div>
+  $$X_2 = \frac{V_{ph}}{I_{ph}}$$
 
 ### C. Determination of Zero Sequence Reactance (X₀)
 
@@ -38,9 +34,7 @@
 5. Record voltage and current.
 6. Calculate:
 
-   <div align="center">
-     <b>X₀ = V / 3I</b>
-   </div>
+    $$X_0 = \frac{V}{3I}$$
    
 ## Observations
 
